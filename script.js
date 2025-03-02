@@ -5,7 +5,7 @@ const firebaseConfig = {
     databaseURL: "https://telegramearningbot-default-rtdb.firebaseio.com",
     projectId: "telegramearningbot",
     storageBucket: "telegramearningbot.appspot.com",
-    messagingSenderId: "123456789",
+    messagingSenderId: "883236360921",
     appId: "1:123456789:web:abcdef123456",
     measurementId: "G-ABCDEFGH"
 };
