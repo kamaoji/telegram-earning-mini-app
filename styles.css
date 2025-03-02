@@ -1,0 +1,37 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: linear-gradient(to bottom, #ff6a00, #ee0979);
+    color: white;
+    padding: 20px;
+}
+
+#spin-wheel-container {
+    margin-top: 20px;
+}
+
+#spin-wheel {
+    width: 200px;
+    transition: transform 3s ease-in-out;
+}
+
+#spin-btn {
+    background: #ffcc00;
+    color: black;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+#join-popup {
+    display: none;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    position: fixed;
+    width: 80%;
+    top: 50%;
+    left: 10%;
+    border-radius: 10px;
+}
