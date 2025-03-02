@@ -1,69 +1,28 @@
-/* Gradient Background */
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #ff0080, #ff6600);
+    background: #0d0d0d;
     color: white;
     text-align: center;
-    padding: 20px;
 }
-
-/* Balance Section */
-.balance {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 15px;
-    text-shadow: 0 0 10px cyan;
+.header h1 {
+    color: cyan;
 }
-
-/* Buttons Style */
-.btn {
-    display: block;
-    width: 80%;
-    max-width: 300px;
-    margin: 10px auto;
-    padding: 15px;
-    font-size: 18px;
-    font-weight: bold;
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    border: 2px solid cyan;
-    border-radius: 10px;
-    text-shadow: 0 0 5px cyan;
-    box-shadow: 0 0 10px cyan;
-    cursor: pointer;
-    transition: all 0.3s ease;
+.spin-container {
+    margin: 20px auto;
 }
-
-/* Hover Effect */
-.btn:hover {
+.spin-wheel {
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, cyan, blue);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+button {
     background: cyan;
-    color: black;
-    box-shadow: 0 0 20px cyan;
-}
-
-/* Spin Button */
-.spin-btn {
-    background: orange;
-    border: 2px solid yellow;
-    box-shadow: 0 0 10px yellow;
-}
-
-.spin-btn:hover {
-    background: yellow;
-    color: black;
-    box-shadow: 0 0 20px yellow;
-}
-
-/* Popup for Join Channel */
-.popup {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(0, 0, 0, 0.9);
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px cyan;
-    text-align: center;
+    border: none;
+    padding: 10px;
+    margin: 10px;
+    cursor: pointer;
 }
