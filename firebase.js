@@ -6,7 +6,7 @@ const auth = firebase.auth();
 const firebaseConfig = {
   apiKey: "AIzaSyDqzbS0CeWAn8jeRF1E4CpKW25uH58DsMs",
   authDomain: "telegramearningbot.firebaseapp.com",
-  databaseURL: "https://your-project-id.firebaseio.com",
+  databaseURL: "https://telegramearningbot-default-rtdb.firebaseio.com/",
   projectId: "telegramearningbot",
   storageBucket: "telegramearningbot.firebasestorage.app",
   messagingSenderId: "883236360921",
