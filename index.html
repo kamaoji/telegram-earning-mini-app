@@ -3,46 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Telegram Earning Mini App</title>
+    <title>Telegram Mini App</title>
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
 
-    <div id="app">
-        <!-- 🔥 Wallet Balance -->
-        <div id="wallet">
-            💰 Balance: <span id="balance">0</span> Spins
+    <div class="container">
+        <!-- User Balance -->
+        <div class="balance">💰 Balance: <span id="spin-count">0</span> Spins</div>
+
+        <!-- Spin Wheel -->
+        <div class="wheel-container">
+            <img src="wheel.png" id="wheel" class="spin-wheel">
+            <button class="spin-btn" onclick="spinWheel()">Spin Now</button>
         </div>
 
-        <!-- 🎡 Spin Wheel -->
-        <div id="spin-wheel-container">
-            <img id="spin-wheel" src="spin-wheel.png" alt="Spin & Earn">
-            <button id="spin-btn">Spin Now</button>
+        <!-- Buttons -->
+        <div class="buttons">
+            <button class="btn daily-bonus" onclick="claimBonus()">🎁 Claim Daily Bonus</button>
+            <button class="btn watch-video">▶️ Watch Video</button>
+            <button class="btn like-post">👍 Like Post</button>
+            <button class="btn join-channel" onclick="showJoinPopup()">📢 Join Channel</button>
+            <button class="btn refer-earn">👥 Refer & Earn</button>
+            <button class="btn withdraw">💸 Withdraw UPI</button>
         </div>
-
-        <!-- 🎁 Daily Bonus -->
-        <button id="daily-bonus">🎁 Claim Daily Bonus</button>
-
-        <!-- 📢 Join Channel Popup -->
-        <div id="join-popup">
-            <p>📢 Channel Join Karo aur 3 Free Spins Pao!</p>
-            <button id="join-channel">Join Now</button>
-        </div>
-
-        <!-- 🔗 Tasks Section -->
-        <div id="tasks">
-            <button class="task-btn" id="watch-video">▶ Watch Video</button>
-            <button class="task-btn" id="like-post">👍 Like Post</button>
-            <button class="task-btn" id="join-group">📢 Join Channel</button>
-        </div>
-
-        <!-- 🔄 Referral System -->
-        <button id="refer-earn">👥 Refer & Earn</button>
-
-        <!-- 💸 Withdrawal -->
-        <button id="withdraw">💸 Withdraw UPI</button>
     </div>
 
-    <script src="script.js"></script>
+    <!-- Join Channel Popup -->
+    <div id="join-popup" class="popup">
+        <div class="popup-content">
+            <h2>📢 Join Our Telegram Channel</h2>
+            <p>Channel join करने पर आपको 3 Free Spins मिलेंगे!</p>
+            <button class="btn join-btn" onclick="verifyJoin()">✅ Join Now</button>
+        </div>
+    </div>
+
 </body>
 </html>
