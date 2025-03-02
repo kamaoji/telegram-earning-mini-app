@@ -1,1 +1,0 @@
-# telegram-earning-mini-app
