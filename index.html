@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spin & Earn</title>
+  <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.1.1/firebase-database.js"></script>
+  <script src="firebase.js"></script>
+  <style>
+    .popup { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); display: flex; justify-content: center; align-items: center; }
+    .popup-content { background: white; padding: 20px; border-radius: 10px; text-align: center; }
+    #mini-app { display: none; }
+  </style>
+</head>
+<body>
+
+  <!-- Join Channel Popup -->
+  <div id="join-popup" class="popup">
+    <div class="popup-content">
+      <h2>🎉 Get 3 Free Spins!</h2>
+      <p>Join our Telegram Channel to Unlock the Mini App.</p>
+      <a href="https://t.me/DESIARUNGAMERS" target="_blank" id="join-btn">Join Now</a>
+    </div>
+  </div>
+
+  <!-- Mini App (Initially Hidden) -->
+  <div id="mini-app">
+    <h1>Welcome to Spin & Earn!</h1>
+    <button onclick="spinWheel()">🎡 Spin Now</button>
+  </div>
+
+  <script>
+    let userId = "USER_TELEGRAM_ID"; // Telegram WebApp se user ka ID fetch karein
+
+    function checkChannelJoin() {
+      fetch(`https://api.telegram.org/bot7700519873:AAH2o689zcZp5Muppow4gWUflqqIoDcn0AA/getChatMember?chat_id=@DESIARUNGAMERS&user_id=${userId}`)
+      .then(response => response.json())
+      .then(data => {
+        if(data.result.status === "member" || data.result.status === "administrator") {
+          document.getElementById("join-popup").style.display = "none";
+          document.getElementById("mini-app").style.display = "block";
+          giveFreeSpins(userId);
+        }
+      });
+    }
+
+    function giveFreeSpins(userId) {
+      let userRef = firebase.database().ref('users/' + userId);
+      userRef.set({ spins: 3 });
+    }
+
+    window.onload = checkChannelJoin;
+  </script>
+
+</body>
+</html>
