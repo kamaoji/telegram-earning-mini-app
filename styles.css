@@ -1,54 +1,60 @@
+/* Gradient Background */
 body {
     font-family: Arial, sans-serif;
-    background: radial-gradient(circle, #000428, #004e92);
+    background: linear-gradient(135deg, #ff0080, #ff6600);
     color: white;
     text-align: center;
+    padding: 20px;
 }
 
-.container {
-    margin-top: 50px;
-}
-
+/* Balance Section */
 .balance {
-    font-size: 20px;
-    padding: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px cyan;
 }
 
-.wheel-container {
-    position: relative;
-    margin: auto;
-    width: 200px;
-}
-
-.spin-wheel {
-    width: 100%;
-    transition: transform 3s ease-out;
-}
-
-.spin-btn {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background: #ff6600;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-size: 18px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px #ff6600;
-}
-
+/* Buttons Style */
 .btn {
     display: block;
+    width: 80%;
+    max-width: 300px;
     margin: 10px auto;
-    padding: 10px;
-    background: #008080;
+    padding: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    background: rgba(0, 0, 0, 0.8);
     color: white;
-    border: none;
+    border: 2px solid cyan;
+    border-radius: 10px;
+    text-shadow: 0 0 5px cyan;
+    box-shadow: 0 0 10px cyan;
     cursor: pointer;
-    border-radius: 5px;
-    box-shadow: 0 0 5px #00ffcc;
+    transition: all 0.3s ease;
 }
 
+/* Hover Effect */
+.btn:hover {
+    background: cyan;
+    color: black;
+    box-shadow: 0 0 20px cyan;
+}
+
+/* Spin Button */
+.spin-btn {
+    background: orange;
+    border: 2px solid yellow;
+    box-shadow: 0 0 10px yellow;
+}
+
+.spin-btn:hover {
+    background: yellow;
+    color: black;
+    box-shadow: 0 0 20px yellow;
+}
+
+/* Popup for Join Channel */
 .popup {
     display: none;
     position: fixed;
@@ -59,4 +65,5 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px cyan;
+    text-align: center;
 }
