@@ -87,3 +87,49 @@ function getUserBalance() {
 }
 
 window.onload = getUserBalance;
+
+const TELEGRAM_BOT_TOKEN = "7700519873:AAH2o689zcZp5Muppow4gWUflqqIoDcn0AA";
+const TELEGRAM_CHANNEL_ID = "@DESIARUNGAMERS";
+
+function checkChannelJoin() {
+  let userId = "USER_TELEGRAM_ID"; // Replace with actual Telegram User ID
+
+  fetch(`https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/getChatMember?chat_id=${TELEGRAM_CHANNEL_ID}&user_id=${userId}`)
+    .then(response => response.json())
+    .then(data => {
+      if (data.ok && (data.result.status === "member" || data.result.status === "administrator" || data.result.status === "creator")) {
+        document.getElementById("join-popup").style.display = "none";
+        giveFreeSpins(userId);
+      } else {
+        alert("❌ You haven't joined the channel yet. Please join and try again!");
+      }
+    })
+    .catch(error => {
+      console.error("Error checking channel join:", error);
+      alert("⚠ Error verifying. Try again later!");
+    });
+}
+
+// User Ko 3 Free Spins Dena
+function giveFreeSpins(userId) {
+  let userRef = firebase.database().ref('users/' + userId);
+
+  userRef.once('value', snapshot => {
+    let currentSpins = snapshot.val()?.spins || 0;
+    userRef.update({ spins: currentSpins + 3 }).then(() => {
+      alert("🎉 You got 3 free spins! Enjoy the Mini App!");
+    });
+  });
+}
+
+// Mini App Load Hone Pe Check Karein
+window.onload = function() {
+  let userId = "USER_TELEGRAM_ID"; // Replace with actual Telegram User ID
+  let userRef = firebase.database().ref('users/' + userId);
+
+  userRef.once('value', snapshot => {
+    if (!snapshot.exists() || !snapshot.val().joined) {
+      document.getElementById("join-popup").style.display = "block";
+    }
+  });
+};
