@@ -76,3 +76,14 @@ function updateBalance(amount) {
 
 // Initialize Wheel
 drawWheel();
+
+function getUserBalance() {
+  let userId = "USER_TELEGRAM_ID"; 
+  let userRef = firebase.database().ref('users/' + userId);
+
+  userRef.on('value', snapshot => {
+    document.getElementById("balance").innerText = snapshot.val()?.balance || 0;
+  });
+}
+
+window.onload = getUserBalance;
