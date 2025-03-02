@@ -3,52 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Telegram Mini App</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Telegram Earning Mini App</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <div class="balance">💰 Balance: <span id="spin-count">0</span> Spins</div>
-
-    <div class="wheel-container">
-        <button class="btn spin-btn" onclick="spinWheel()">🎡 Spin Now</button>
-    </div>
-
-    <button class="btn daily-bonus" onclick="claimBonus()">🎁 Claim Daily Bonus</button>
-    <button class="btn watch-video">▶️ Watch Video</button>
-    <button class="btn like-post">👍 Like Post</button>
-    <button class="btn join-channel" onclick="showJoinPopup()">📢 Join Channel</button>
-    <button class="btn refer-earn">👥 Refer & Earn</button>
-    <button class="btn withdraw">💸 Withdraw UPI</button>
-
-    <!-- Join Channel Popup -->
-    <div id="join-popup" class="popup">
-        <div class="popup-content">
-            <h2>📢 Join Our Telegram Channel</h2>
-            <p>Channel join करने पर आपको 3 Free Spins मिलेंगे!</p>
-            <button class="btn join-btn" onclick="verifyJoin()">✅ Join Now</button>
+    <div id="app">
+        <div class="header">
+            <h1>📱 Telegram Mini App</h1>
         </div>
+        <div class="spin-container">
+            <div class="spin-wheel" onclick="spinWheel()">
+                <div class="wheel"></div>
+            </div>
+        </div>
+        <div class="tasks">
+            <button onclick="joinChannel()">📢 चैनल जॉइन करें</button>
+            <button onclick="likePost()">👍 पोस्ट लाइक करें</button>
+            <button onclick="watchVideo()">▶ वीडियो देखें</button>
+        </div>
+        <div id="bonus">🎁 डेली बोनस: <span id="bonusAmount">0</span></div>
+        <div id="withdraw">💰 विदड्रॉ करें</div>
     </div>
-
-    <script>
-        function spinWheel() {
-            alert("🎉 Congratulations! You won some spins.");
-        }
-
-        function claimBonus() {
-            alert("🎁 Daily Bonus Claimed!");
-        }
-
-        function showJoinPopup() {
-            document.getElementById("join-popup").style.display = "block";
-        }
-
-        function verifyJoin() {
-            document.getElementById("spin-count").innerText = 3;
-            alert("✅ Channel Joined! You got 3 Free Spins.");
-            document.getElementById("join-popup").style.display = "none";
-        }
-    </script>
-
+    <script src="script.js"></script>
 </body>
 </html>
