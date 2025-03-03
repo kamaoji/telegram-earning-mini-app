@@ -4,6 +4,19 @@ document.getElementById("spinButton").addEventListener("click", function() {
     document.getElementById("result").innerText = "आपका इनाम: " + randomPrize;
 });
 
+document.getElementById("spinButton").addEventListener("click", function() {
+    fetch("https://telegram-earning-mini-app.onrender.com/spin", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user_id: "123456" })
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.getElementById("result").innerText = data.message;
+    });
+});
+
+
 document.getElementById("checkJoin").addEventListener("click", function() {
     let userId = "123456"; // यहां Telegram User ID आएगी
 
