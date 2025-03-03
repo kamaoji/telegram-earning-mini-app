@@ -30,3 +30,9 @@ fetch(`${API_URL}/get_tasks`)
 
 </body>
 </html>
+<script>
+    let tg = window.Telegram.WebApp;
+    let userId = tg.initDataUnsafe.user.id;
+    
+    document.getElementById("telegramUserId").innerText = "Your Telegram ID: " + userId;
+</script>
