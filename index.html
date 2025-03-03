@@ -1,38 +1,257 @@
-<!DOCTYPE html>
-<html lang="hi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Telegram Earning Mini App</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="container">
-        <h1>टेलीग्राम अर्निंग ऐप</h1>
-        <button id="spinButton">स्पिन व्हील घुमाएं</button>
-        <p id="result"></p>
-    </div>
-    <script src="script.js"></script>
-    <h3>Complete Tasks and Earn</h3>
-<a id="videoTask" target="_blank">📺 Watch Video</a><br>
-<a id="postTask" target="_blank">👍 Like Post</a><br>
-<a id="channelTask" target="_blank">📢 Join Channel</a>
-
-<script>
-fetch(`${API_URL}/get_tasks`)
-    .then(res => res.json())
-    .then(data => {
-        document.getElementById("videoTask").href = data.video;
-        document.getElementById("postTask").href = data.post;
-        document.getElementById("channelTask").href = data.channel;
-    });
-</script>
-
-</body>
-</html>
-<script>
-    let tg = window.Telegram.WebApp;
-    let userId = tg.initDataUnsafe.user.id;
-    
-    document.getElementById("telegramUserId").innerText = "Your Telegram ID: " + userId;
-</script>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
+	<LinearLayout
+		android:id="@+id/linear1"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:gravity="center_horizontal"
+		android:orientation="vertical">
+		<LinearLayout
+			android:id="@+id/linear3"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="15dp"
+			android:gravity="center_horizontal|center_vertical"
+			android:orientation="vertical">
+			<LinearLayout
+				android:id="@+id/linear5"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:gravity="center_horizontal|center_vertical"
+				android:orientation="horizontal">
+				<LinearLayout
+					android:id="@+id/linear6"
+					android:layout_width="40dp"
+					android:layout_height="40dp"
+					android:padding="8dp"
+					android:background="@drawable/ic_game_4"
+					android:orientation="vertical" />
+				<LinearLayout
+					android:id="@+id/linear7"
+					android:layout_width="40dp"
+					android:layout_height="40dp"
+					android:layout_marginLeft="60dp"
+					android:layout_marginRight="60dp"
+					android:padding="8dp"
+					android:background="@drawable/refern_n_earn_2"
+					android:orientation="vertical" />
+				<LinearLayout
+					android:id="@+id/linear8"
+					android:layout_width="40dp"
+					android:layout_height="40dp"
+					android:padding="8dp"
+					android:background="@drawable/ic_box_7"
+					android:orientation="vertical" />
+			</LinearLayout>
+			<LinearLayout
+				android:id="@+id/linear10"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:gravity="center_horizontal"
+				android:orientation="horizontal">
+				<LinearLayout
+					android:id="@+id/rank"
+					android:layout_width="100dp"
+					android:layout_height="40dp"
+					android:background="#9C27B0"
+					android:gravity="center_vertical"
+					android:orientation="vertical">
+					<TextView
+						android:id="@+id/textview1"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:padding="8dp"
+						android:text="Rank"
+						android:textSize="14sp"
+						android:textStyle="bold"
+						android:textColor="#FFFFFF"
+						android:layout_gravity="center_horizontal|center_vertical" />
+				</LinearLayout>
+				<LinearLayout
+					android:id="@+id/invite"
+					android:layout_width="100dp"
+					android:layout_height="40dp"
+					android:layout_marginLeft="5dp"
+					android:layout_marginRight="5dp"
+					android:background="#9C27B0"
+					android:gravity="center_horizontal|center_vertical"
+					android:orientation="vertical">
+					<TextView
+						android:id="@+id/huhh"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:padding="8dp"
+						android:gravity="center_horizontal|center_vertical"
+						android:text="Invitation"
+						android:textSize="14sp"
+						android:textStyle="bold"
+						android:textColor="#FFFFFF"
+						android:layout_gravity="center_horizontal|center_vertical" />
+				</LinearLayout>
+				<LinearLayout
+					android:id="@+id/withdrawal"
+					android:layout_width="100dp"
+					android:layout_height="40dp"
+					android:background="#F9A825"
+					android:gravity="center_horizontal|center_vertical"
+					android:orientation="vertical">
+					<TextView
+						android:id="@+id/textview3"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:padding="8dp"
+						android:text="Withdrawal"
+						android:textSize="14sp"
+						android:textStyle="bold"
+						android:textColor="#FFFFFF"
+						android:layout_gravity="center_horizontal|center_vertical" />
+				</LinearLayout>
+			</LinearLayout>
+		</LinearLayout>
+		<LinearLayout
+			android:id="@+id/linear35"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="20dp"
+			android:padding="8dp"
+			android:orientation="horizontal">
+			<TextView
+				android:id="@+id/scrolling_tv"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:padding="8dp"
+				android:text="🎉akash Withdrawal 500 Rupye🎉                               🎉akash Withdrawal 500 Rupye🎉                                🎉akash Withdrawal 500 Rupye🎉                               🎉akash Withdrawal 500 Rupye🎉                               🎉akash Withdrawal 500 Rupye🎉                               🎉akash Withdrawal 500 Rupye🎉                               🎉akash Withdrawal 500 Rupye🎉                               🎉akash Withdrawal 500 Rupye🎉                               🎉akash Withdrawal 500 Rupye🎉                               🎉akash Withdrawal 500 Rupye🎉                               🎉akash Withdrawal 500 Rupye🎉                               🎉akash Withdrawal 500 Rupye🎉                               🎉akash Withdrawal 500 Rupye🎉                               🎉akash Withdrawal 500 Rupye🎉                               🎉akash Withdrawal 500 Rupye🎉                               🎉akash Withdrawal 500 Rupye🎉                               🎉akash Withdrawal 500 Rupye🎉                               🎉akash Withdrawal 500 Rupye🎉                               🎉akash Withdrawal 500 Rupye🎉                               🎉akash Withdrawal 500 Rupye🎉                               🎉akash Withdrawal 500 Rupye🎉                               🎉akash Withdrawal 500 Rupye🎉                               🎉akash Withdrawal 700 Rupye🎉                               🎉akash Withdrawal 500 Rupye🎉                               "
+				android:textSize="12sp"
+				android:textStyle="bold"
+				android:textColor="#FFFFFF" />
+		</LinearLayout>
+		<LinearLayout
+			android:id="@+id/linear14"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="20dp"
+			android:orientation="vertical">
+			<LinearLayout
+				android:id="@+id/linear19"
+				android:layout_width="350dp"
+				android:layout_height="350dp"
+				android:background="@drawable/spin"
+				android:orientation="vertical">
+				<LinearLayout
+					android:id="@+id/linear20"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:paddingLeft="290dp"
+					android:orientation="horizontal">
+					<LinearLayout
+						android:id="@+id/linear21"
+						android:layout_width="50dp"
+						android:layout_height="50dp"
+						android:padding="8dp"
+						android:background="@drawable/watch_video"
+						android:orientation="horizontal" />
+				</LinearLayout>
+				<LinearLayout
+					android:id="@+id/linear22"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="250dp"
+					android:paddingLeft="290dp"
+					android:orientation="horizontal">
+					<LinearLayout
+						android:id="@+id/linear23"
+						android:layout_width="50dp"
+						android:layout_height="50dp"
+						android:padding="8dp"
+						android:background="@drawable/shopping_cart"
+						android:orientation="horizontal" />
+				</LinearLayout>
+			</LinearLayout>
+		</LinearLayout>
+		<LinearLayout
+			android:id="@+id/linear15"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="30dp"
+			android:orientation="vertical">
+			<LinearLayout
+				android:id="@+id/linear24"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:padding="8dp"
+				android:gravity="center_horizontal"
+				android:orientation="horizontal"
+				android:layout_gravity="center_horizontal">
+				<LinearLayout
+					android:id="@+id/refer"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:background="#9C27B0"
+					android:gravity="center_horizontal|center_vertical"
+					android:orientation="horizontal">
+					<LinearLayout
+						android:id="@+id/linear33"
+						android:layout_width="30dp"
+						android:layout_height="30dp"
+						android:layout_marginLeft="5dp"
+						android:layout_marginRight="3dp"
+						android:padding="8dp"
+						android:background="@drawable/spin"
+						android:orientation="vertical" />
+					<TextView
+						android:id="@+id/textview5"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:padding="8dp"
+						android:text="Invite for Spins! "
+						android:textSize="20sp"
+						android:textStyle="bold"
+						android:textColor="#FFFFFF" />
+				</LinearLayout>
+			</LinearLayout>
+			<LinearLayout
+				android:id="@+id/linear25"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:padding="8dp"
+				android:gravity="center_horizontal"
+				android:orientation="horizontal">
+				<TextView
+					android:id="@+id/textview4"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginRight="10dp"
+					android:padding="8dp"
+					android:text="Shere To :"
+					android:textSize="12sp"
+					android:textStyle="bold"
+					android:textColor="#FFFFFF" />
+				<LinearLayout
+					android:id="@+id/linear26"
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"
+					android:padding="8dp"
+					android:orientation="vertical" />
+				<LinearLayout
+					android:id="@+id/linear27"
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"
+					android:layout_marginLeft="10dp"
+					android:layout_marginRight="10dp"
+					android:padding="8dp"
+					android:orientation="vertical" />
+				<LinearLayout
+					android:id="@+id/linear28"
+					android:layout_width="wrap_content"
+					android:layout_height="match_parent"
+					android:padding="8dp"
+					android:orientation="vertical" />
+			</LinearLayout>
+		</LinearLayout>
+	</LinearLayout>
+</LinearLayout>
