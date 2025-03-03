@@ -34,3 +34,22 @@ document.getElementById("checkJoin").addEventListener("click", function() {
         }
     });
 });
+
+document.getElementById("checkLike").addEventListener("click", function() {
+    let userId = "123456"; // Telegram User ID
+    let postId = "7890";   // Telegram Post ID
+
+    fetch("https://telegram-earning-mini-app.onrender.com/check_like", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user_id: userId, post_id: postId })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.liked) {
+            document.getElementById("result").innerText = "आपने पोस्ट को लाइक कर दिया है!";
+        } else {
+            document.getElementById("result").innerText = "कृपया पहले पोस्ट को लाइक करें!";
+        }
+    });
+});
