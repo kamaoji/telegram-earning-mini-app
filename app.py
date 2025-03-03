@@ -106,3 +106,33 @@ def check_like():
             return jsonify({"error": "आपने पोस्ट को लाइक नहीं किया!", "liked": False})
     else:
         return jsonify({"error": "Telegram API से डेटा प्राप्त नहीं हुआ!"})
+
+import requests
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+
+YOUTUBE_API_KEY = "YOUR_YOUTUBE_API_KEY"
+VIDEO_ID = "YOUR_VIDEO_ID"
+
+@app.route("/check_video_watch", methods=["POST"])
+def check_video_watch():
+    data = request.json
+    user_id = data["user_id"]
+    
+    url = f"https://www.googleapis.com/youtube/v3/videos?part=statistics&id={VIDEO_ID}&key={YOUTUBE_API_KEY}"
+    response = requests.get(url).json()
+
+    if "items" in response and len(response["items"]) > 0:
+        view_count = int(response["items"][0]["statistics"]["viewCount"])
+        
+        # अगर व्यू काउंट 10 से बढ़ा है तो यूजर ने वीडियो देखा
+        if view_count > 10:
+            return jsonify({"message": "आपने वीडियो देख लिया है!", "watched": True})
+        else:
+            return jsonify({"error": "कृपया पूरा वीडियो देखें!", "watched": False})
+    else:
+        return jsonify({"error": "YouTube API से डेटा नहीं मिला!"})
+
+if __name__ == "__main__":
+    app.run(debug=True)
