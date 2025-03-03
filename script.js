@@ -71,3 +71,5 @@ document.getElementById("checkVideo").addEventListener("click", function() {
         }
     });
 });
+
+const API_URL = "https://telegram-earning-mini-app.onrender.com";
