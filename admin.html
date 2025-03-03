@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .container { width: 100%; max-width: 600px; margin: auto; }
+        input, button { width: 100%; padding: 10px; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Admin Panel</h2>
+        
+        <h3>User Ban/Unban</h3>
+        <input type="text" id="userId" placeholder="User ID">
+        <button onclick="banUser()">Ban User</button>
+        <button onclick="unbanUser()">Unban User</button>
+
+        <h3>Balance Update</h3>
+        <input type="number" id="balanceAmount" placeholder="Amount">
+        <button onclick="updateBalance()">Update Balance</button>
+
+        <h3>Refer Count Update</h3>
+        <button onclick="updateRefer()">Update Refer Count</button>
+
+        <h3>Withdrawal Requests</h3>
+        <button onclick="approveWithdraw()">Approve Withdraw</button>
+        <button onclick="rejectWithdraw()">Reject Withdraw</button>
+
+        <p id="status"></p>
+    </div>
+
+    <script>
+        const API_URL = "https://telegram-earning-mini-app.onrender.com";
+
+        function banUser() {
+            let userId = document.getElementById("userId").value;
+            fetch(`${API_URL}/ban_user`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ user_id: userId })
+            }).then(res => res.json())
+              .then(data => document.getElementById("status").innerText = data.message);
+        }
+
+        function unbanUser() {
+            let userId = document.getElementById("userId").value;
+            fetch(`${API_URL}/unban_user`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ user_id: userId })
+            }).then(res => res.json())
+              .then(data => document.getElementById("status").innerText = data.message);
+        }
+
+        function updateBalance() {
+            let userId = document.getElementById("userId").value;
+            let amount = document.getElementById("balanceAmount").value;
+            fetch(`${API_URL}/update_balance`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ user_id: userId, amount: amount })
+            }).then(res => res.json())
+              .then(data => document.getElementById("status").innerText = data.message);
+        }
+
+        function updateRefer() {
+            let userId = document.getElementById("userId").value;
+            fetch(`${API_URL}/update_refer`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ user_id: userId })
+            }).then(res => res.json())
+              .then(data => document.getElementById("status").innerText = data.message);
+        }
+
+        function approveWithdraw() {
+            let userId = document.getElementById("userId").value;
+            fetch(`${API_URL}/approve_withdraw`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ user_id: userId })
+            }).then(res => res.json())
+              .then(data => document.getElementById("status").innerText = data.message);
+        }
+
+        function rejectWithdraw() {
+            let userId = document.getElementById("userId").value;
+            fetch(`${API_URL}/reject_withdraw`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ user_id: userId })
+            }).then(res => res.json())
+              .then(data => document.getElementById("status").innerText = data.message);
+        }
+    </script>
+</body>
+</html>
