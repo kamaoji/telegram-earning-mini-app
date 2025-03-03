@@ -96,6 +96,35 @@
             }).then(res => res.json())
               .then(data => document.getElementById("status").innerText = data.message);
         }
+
+        <h3>Task Management</h3>
+<input type="text" id="videoLink" placeholder="YouTube Video Link">
+<button onclick="updateTask('video')">Update Video Task</button>
+
+<input type="text" id="postLink" placeholder="Telegram Post Link">
+<button onclick="updateTask('post')">Update Post Task</button>
+
+<input type="text" id="channelLink" placeholder="Telegram Channel Link">
+<button onclick="updateTask('channel')">Update Channel Task</button>
+
+<p id="taskStatus"></p>
+
+<script>
+function updateTask(taskType) {
+    let link = "";
+    if (taskType === "video") link = document.getElementById("videoLink").value;
+    if (taskType === "post") link = document.getElementById("postLink").value;
+    if (taskType === "channel") link = document.getElementById("channelLink").value;
+
+    fetch(`${API_URL}/update_task`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ task_type: taskType, link: link })
+    }).then(res => res.json())
+      .then(data => document.getElementById("taskStatus").innerText = data.message);
+}
+</script>
+
     </script>
 </body>
 </html>
