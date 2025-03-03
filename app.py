@@ -112,7 +112,7 @@ from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
-YOUTUBE_API_KEY = "YOUR_YOUTUBE_API_KEY"
+YOUTUBE_API_KEY = "AIzaSyDK3TrD79-AvhdKu2APb336sypcNmNrcUI"
 VIDEO_ID = "YOUR_VIDEO_ID"
 
 @app.route("/check_video_watch", methods=["POST"])
