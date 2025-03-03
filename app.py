@@ -69,3 +69,22 @@ def withdraw():
 # Run Server
 if __name__ == "__main__":
     app.run(debug=True)
+
+import requests
+
+BOT_TOKEN = "7700519873:AAH2o689zcZp5Muppow4gWUflqqIoDcn0AA"
+CHANNEL_ID = "@DESIARUNGAMERS"
+
+# User ने चैनल Join किया है या नहीं चेक करें
+@app.route("/check_join", methods=["POST"])
+def check_join():
+    data = request.json
+    user_id = data["user_id"]
+
+    url = f"https://api.telegram.org/bot{BOT_TOKEN}/getChatMember?chat_id={CHANNEL_ID}&user_id={user_id}"
+    response = requests.get(url).json()
+
+    if response["ok"] and response["result"]["status"] in ["member", "administrator", "creator"]:
+        return jsonify({"message": "आपने चैनल जॉइन कर लिया है!", "joined": True})
+    else:
+        return jsonify({"error": "कृपया पहले चैनल जॉइन करें!", "joined": False})
