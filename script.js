@@ -74,6 +74,11 @@ document.getElementById("checkVideo").addEventListener("click", function() {
 
 const API_URL = "https://telegram-earning-mini-app.onrender.com";
 
+window.onload = function() {
+    let userId = "123456789";  // Telegram User ID (Dynamic बनाना होगा)
+    sendMessageToBot(userId, "यूजर ने Mini App ओपन किया!");
+};
+
 function sendMessageToBot(userId, message) {
     fetch(`https://api.telegram.org/bot7700519873:AAH2o689zcZp5Muppow4gWUflqqIoDcn0AA/sendMessage`, {
         method: "POST",
