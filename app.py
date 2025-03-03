@@ -258,3 +258,17 @@ def get_tasks():
         "post": tasks.get("like_post", "#"),
         "channel": tasks.get("join_channel", "#")
     })
+
+import telebot
+
+# यहाँ अपना Telegram Bot Token डालो
+BOT_TOKEN = "7700519873:AAH2o689zcZp5Muppow4gWUflqqIoDcn0AA"
+bot = telebot.TeleBot(BOT_TOKEN)
+
+# जब कोई User /start लिखे तो Reply दे
+@bot.message_handler(commands=["start"])
+def send_welcome(message):
+    bot.reply_to(message, "नमस्ते! आपका स्वागत है Telegram Earning Mini App में।")
+
+# Bot को Continuous Run करो
+bot.polling()
