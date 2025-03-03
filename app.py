@@ -136,3 +136,88 @@ def check_video_watch():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+@app.route("/ban_user", methods=["POST"])
+def ban_user():
+    data = request.json
+    user_id = data["user_id"]
+    
+    conn = connect_db()
+    cursor = conn.cursor()
+    
+    cursor.execute("UPDATE users SET banned = 1 WHERE user_id = ?", (user_id,))
+    conn.commit()
+    conn.close()
+    
+    return jsonify({"message": f"User {user_id} को Ban कर दिया गया!"})
+
+@app.route("/unban_user", methods=["POST"])
+def unban_user():
+    data = request.json
+    user_id = data["user_id"]
+    
+    conn = connect_db()
+    cursor = conn.cursor()
+    
+    cursor.execute("UPDATE users SET banned = 0 WHERE user_id = ?", (user_id,))
+    conn.commit()
+    conn.close()
+    
+    return jsonify({"message": f"User {user_id} को Unban कर दिया गया!"})
+
+@app.route("/update_balance", methods=["POST"])
+def update_balance():
+    data = request.json
+    user_id = data["user_id"]
+    amount = data["amount"]
+    
+    conn = connect_db()
+    cursor = conn.cursor()
+    
+    cursor.execute("UPDATE users SET balance = balance + ? WHERE user_id = ?", (amount, user_id))
+    conn.commit()
+    conn.close()
+    
+    return jsonify({"message": f"User {user_id} का बैलेंस अपडेट कर दिया गया!"})
+
+@app.route("/update_refer", methods=["POST"])
+def update_refer():
+    data = request.json
+    user_id = data["user_id"]
+    
+    conn = connect_db()
+    cursor = conn.cursor()
+    
+    cursor.execute("UPDATE users SET refer_count = refer_count + 1 WHERE user_id = ?", (user_id,))
+    conn.commit()
+    conn.close()
+    
+    return jsonify({"message": f"User {user_id} का Refer Count अपडेट कर दिया गया!"})
+
+@app.route("/approve_withdraw", methods=["POST"])
+def approve_withdraw():
+    data = request.json
+    user_id = data["user_id"]
+    
+    conn = connect_db()
+    cursor = conn.cursor()
+    
+    cursor.execute("UPDATE withdrawals SET status = 'Approved' WHERE user_id = ?", (user_id,))
+    conn.commit()
+    conn.close()
+    
+    return jsonify({"message": f"User {user_id} की Withdrawal Request Approved हो गई!"})
+
+@app.route("/reject_withdraw", methods=["POST"])
+def reject_withdraw():
+    data = request.json
+    user_id = data["user_id"]
+    
+    conn = connect_db()
+    cursor = conn.cursor()
+    
+    cursor.execute("UPDATE withdrawals SET status = 'Rejected' WHERE user_id = ?", (user_id,))
+    conn.commit()
+    conn.close()
+    
+    return jsonify({"message": f"User {user_id} की Withdrawal Request Reject कर दी गई!"})
