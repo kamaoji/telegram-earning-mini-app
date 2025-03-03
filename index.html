@@ -13,5 +13,20 @@
         <p id="result"></p>
     </div>
     <script src="script.js"></script>
+    <h3>Complete Tasks and Earn</h3>
+<a id="videoTask" target="_blank">📺 Watch Video</a><br>
+<a id="postTask" target="_blank">👍 Like Post</a><br>
+<a id="channelTask" target="_blank">📢 Join Channel</a>
+
+<script>
+fetch(`${API_URL}/get_tasks`)
+    .then(res => res.json())
+    .then(data => {
+        document.getElementById("videoTask").href = data.video;
+        document.getElementById("postTask").href = data.post;
+        document.getElementById("channelTask").href = data.channel;
+    });
+</script>
+
 </body>
 </html>
