@@ -53,3 +53,21 @@ document.getElementById("checkLike").addEventListener("click", function() {
         }
     });
 });
+
+document.getElementById("checkVideo").addEventListener("click", function() {
+    let userId = "123456"; // Telegram User ID
+
+    fetch("https://telegram-earning-mini-app.onrender.com/check_video_watch", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user_id: userId })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.watched) {
+            document.getElementById("result").innerText = "आपने वीडियो देख लिया!";
+        } else {
+            document.getElementById("result").innerText = "कृपया पूरा वीडियो देखें!";
+        }
+    });
+});
