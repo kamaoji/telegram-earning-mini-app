@@ -88,3 +88,21 @@ def check_join():
         return jsonify({"message": "आपने चैनल जॉइन कर लिया है!", "joined": True})
     else:
         return jsonify({"error": "कृपया पहले चैनल जॉइन करें!", "joined": False})
+
+@app.route("/check_like", methods=["POST"])
+def check_like():
+    data = request.json
+    user_id = data["user_id"]
+    post_id = data["post_id"]  # Telegram Post ID
+
+    url = f"https://api.telegram.org/bot{BOT_TOKEN}/getChatMember?chat_id={CHANNEL_ID}&user_id={user_id}"
+    response = requests.get(url).json()
+
+    if response["ok"]:
+        reactions = response["result"].get("custom_emoji_reactions", [])
+        if reactions:  # अगर कोई reaction है तो मतलब पोस्ट लाइक की गई
+            return jsonify({"message": "आपने पोस्ट को लाइक कर दिया है!", "liked": True})
+        else:
+            return jsonify({"error": "आपने पोस्ट को लाइक नहीं किया!", "liked": False})
+    else:
+        return jsonify({"error": "Telegram API से डेटा प्राप्त नहीं हुआ!"})
