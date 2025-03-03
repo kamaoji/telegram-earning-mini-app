@@ -73,3 +73,15 @@ document.getElementById("checkVideo").addEventListener("click", function() {
 });
 
 const API_URL = "https://telegram-earning-mini-app.onrender.com";
+
+function sendMessageToBot(userId, message) {
+    fetch(`https://api.telegram.org/bot7700519873:AAH2o689zcZp5Muppow4gWUflqqIoDcn0AA/sendMessage`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            chat_id: userId,
+            text: message
+        })
+    }).then(response => response.json())
+      .then(data => console.log("Message sent:", data));
+}
