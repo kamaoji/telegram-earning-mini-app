@@ -221,3 +221,24 @@ def reject_withdraw():
     conn.close()
     
     return jsonify({"message": f"User {user_id} की Withdrawal Request Reject कर दी गई!"})
+
+@app.route("/update_task", methods=["POST"])
+def update_task():
+    data = request.json
+    task_type = data["task_type"]
+    link = data["link"]
+
+    conn = connect_db()
+    cursor = conn.cursor()
+    
+    if task_type == "video":
+        cursor.execute("UPDATE tasks SET link = ? WHERE task_name = 'watch_video'", (link,))
+    elif task_type == "post":
+        cursor.execute("UPDATE tasks SET link = ? WHERE task_name = 'like_post'", (link,))
+    elif task_type == "channel":
+        cursor.execute("UPDATE tasks SET link = ? WHERE task_name = 'join_channel'", (link,))
+    
+    conn.commit()
+    conn.close()
+    
+    return jsonify({"message": f"{task_type} Task अपडेट कर दिया गया!"})
