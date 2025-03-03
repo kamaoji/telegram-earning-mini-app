@@ -242,3 +242,19 @@ def update_task():
     conn.close()
     
     return jsonify({"message": f"{task_type} Task अपडेट कर दिया गया!"})
+
+@app.route("/get_tasks", methods=["GET"])
+def get_tasks():
+    conn = connect_db()
+    cursor = conn.cursor()
+    
+    cursor.execute("SELECT task_name, link FROM tasks")
+    tasks = {row[0]: row[1] for row in cursor.fetchall()}
+    
+    conn.close()
+    
+    return jsonify({
+        "video": tasks.get("watch_video", "#"),
+        "post": tasks.get("like_post", "#"),
+        "channel": tasks.get("join_channel", "#")
+    })
